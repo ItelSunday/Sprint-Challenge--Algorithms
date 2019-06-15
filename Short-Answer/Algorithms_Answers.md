@@ -37,3 +37,18 @@ Note:
 - linear O(n)
 - constant O(1)
 - quadratic O(n^2)
+
+## Exercise II
+
+Suppose that you have an _n_-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor _f_ or higher, and doesn't get broken if dropped off a floor less than floor _f_. Devise a strategy to determine the value of _f_ such that the number of dropped eggs is minimized.
+
+Write out your proposed algorithm in plain English or pseudocode and give the runtime complexity of your solution.
+
+# n story building // identify number
+#egg broke if thrown on floor or higher
+#egg not broke if dropped off a floor less than floor
+
+#determine the value of f that the number of dropped eggs minimized
+
+1. Identify the number of floor
+2. Divide the number of floor

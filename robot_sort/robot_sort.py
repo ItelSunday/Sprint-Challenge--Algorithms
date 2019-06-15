@@ -152,9 +152,6 @@ class SortingRobot:
                     self.move_left()
                     self.set_light_on()
         print('Robot works')
-                
-                    # self.set_light_off()
-                    # break
                     
         
             # while self.move_right:
