@@ -3,6 +3,7 @@ class SortingRobot:
         """
         SortingRobot takes a list and sorts it.
         """
+        #attributes 
         self._list = l          # The list the robot is tasked with sorting
         self._item = None       # The item the robot is holding
         self._position = 0      # The list position the robot is at
@@ -101,28 +102,31 @@ class SortingRobot:
         # Starts from the beginning with it's lights on while sorting items (..insert compare and swap..), when it's done it will switch the lights off.
         # Missing things
         #   (i)
-        #   [1,   2,    6,   5,     4]
+        #   [4,   5]
         self.set_light_on() #First, set the lights on
-        while self.set_light_on():
-            self.set_light_off()
+        while self.light_is_on():
+            self.set_light_off() #SET FINAL ACTION
+            #print(self.light_is_on())
+            
             while self.can_move_right(): #starts at the beginning move to the right 
-                if self.compare_item == None: # compares item starts with none or 1
+                if self.compare_item() == None: # compares item starts with none or 1
                     self.swap_item() #swaps item and move to the right
                     self.move_right()
                     
-                if self.compare_item() == 1:
+                if self.compare_item() == 1: #Moves item to the correct place
                     self.swap_item()
                     self.move_left()
                     self.swap_item()
                     self.move_right()
+                    self.set_light_on()
                     
-                if self.compare_item() == -1:
+                if self.compare_item() == -1: #Item has less value so item doesn't need to be sorted
                     self.move_left()
                     self.swap_item()
                     self.move_right()
                 
-                if self.compare_item() == 0: #if both items have the same value
-                    self.move_right()
+                if self.compare_item() == 0: #if both items have the same value so item doesn't need to be sorted
+                    self.move_left()
                     self.swap_item()
                     self.move_right()
                         
@@ -136,36 +140,21 @@ class SortingRobot:
                     self.swap_item()
                     self.move_left()
                     
-                if self.compare_item() == 0:
+                if self.compare_item() == 0:  #if the value of item the robot holding is greater than the value of the item on the list that the robot is comparing
                     self.move_left()
                     self.swap_item()
                     self.move_left()
-                
-                 #if the value of item the robot holding is greater than the value of the item on the list that the robot is comparing
                 
                 if self.compare_item() == -1: #if the robot is holding has less than value
                     self.swap_item()
                     self.move_right()
                     self.swap_item()
                     self.move_left()
-                    
+                    self.set_light_on()
+        print('Robot works')
                 
                     # self.set_light_off()
                     # break
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                     
-                    
-                    
-                    
-            
-            
                     
         
             # while self.move_right:
@@ -182,20 +171,9 @@ class SortingRobot:
             #         self.set_light_off()
             #         break
                 
-                     
+          # turn your sortingrobot list   to the sorted list        
                     
-                     
-                
-                
-            
-
-            
-
-        
-
-
-if __name__ == "__main__":
-    # Main command for Sorting Robot
+ # Main command for Sorting Robot
         #self._item = None       # The item the robot is holding
         #self._position = 0      # The list position the robot is at
         #self._light = "OFF"     # The state of the robot's light
@@ -211,8 +189,11 @@ if __name__ == "__main__":
         #self.swap_item       :   swaps current held item with the list in front
         #self.compare_item    :   compares current held item with the list item item in front of the robot
         
+        #
         #self.set_light_on    :   turn on robot's light. Otherwise, false. | Stretch: triggers lights when looking for items from left or right when finding item on the list
         #self.set_light_off   :   non-movement
+
+if __name__ == "__main__":
 
     l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1, 45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
