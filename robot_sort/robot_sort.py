@@ -102,16 +102,15 @@ class SortingRobot:
         # Starts from the beginning with it's lights on while sorting items (..insert compare and swap..), when it's done it will switch the lights off.
         # Missing things
         #   (i)
-        #   [4,   5]
+        #   [4,   5,    2,  1]
         self.set_light_on() #First, set the lights on
-        while self.light_is_on():
+        while self.light_is_on() is True: #initiate the while loop
             self.set_light_off() #SET FINAL ACTION
             #print(self.light_is_on())
             
             while self.can_move_right(): #starts at the beginning move to the right 
-                if self.compare_item() == None: # compares item starts with none or 1
-                    self.swap_item() #swaps item and move to the right
-                    self.move_right()
+                self.swap_item() #swaps item and move to the right
+                self.move_right()
                     
                 if self.compare_item() == 1: #Moves item to the correct place
                     self.swap_item()
@@ -129,46 +128,14 @@ class SortingRobot:
                     self.move_left()
                     self.swap_item()
                     self.move_right()
-                        
-            while self.can_move_left():
-                if self.compare_item() == None:
-                    self.swap_item()
-                    self.move_left()
+            # after the robot reaches the end of the array the main while loop will continue from here 
                     
-                if self.compare_item() == 1:
-                    self.move_right()
-                    self.swap_item()
-                    self.move_left()
-                    
-                if self.compare_item() == 0:  #if the value of item the robot holding is greater than the value of the item on the list that the robot is comparing
-                    self.move_left()
-                    self.swap_item()
-                    self.move_left()
-                
-                if self.compare_item() == -1: #if the robot is holding has less than value
-                    self.swap_item()
-                    self.move_right()
-                    self.swap_item()
-                    self.move_left()
-                    self.set_light_on()
+            if self.light_is_on() and self.can_move_right() is False: #break
+                while self.can_move_left() == True:
+                    self.move_left() #will be activated
         print('Robot works')
-                    
-        
-            # while self.move_right:
-            #     if self.compare_item == 1: 
-            #         self.swap_item()
-            #         self.move_left
-            #     else: 
-            #         self.move_right()
-            #         #when do I switch off the light? LOLZ
-        
-            # while self.can_move_right():
-            #     if self.compare_item == -1:
-            #         self.swap_item()
-            #         self.set_light_off()
-            #         break
                 
-          # turn your sortingrobot list   to the sorted list        
+          # turn your sortingrobot list to the sorted list        
                     
  # Main command for Sorting Robot
         #self._item = None       # The item the robot is holding
@@ -186,7 +153,6 @@ class SortingRobot:
         #self.swap_item       :   swaps current held item with the list in front
         #self.compare_item    :   compares current held item with the list item item in front of the robot
         
-        #
         #self.set_light_on    :   turn on robot's light. Otherwise, false. | Stretch: triggers lights when looking for items from left or right when finding item on the list
         #self.set_light_off   :   non-movement
 
