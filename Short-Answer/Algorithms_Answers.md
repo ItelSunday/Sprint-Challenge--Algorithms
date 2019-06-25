@@ -2,11 +2,12 @@ Add your answers to the Algorithms exercises here.
 ## Exercise I
 
 ```
-a)  a = 0
+a)  a = 0 // 0(1)
     while (a < n * n * n) // 0(1) * 0(n) * 0(n) = 0(n)
       a = a + n * n // 0(1)
+                  
 ```
-- The loop is 0(n) as it doesn't modifies n, every loop just increases and 0(n) terms dominates 0(1).
+- The loop is "0(n)" as it doesn't modifies n, every loop just increases and 0(n) terms dominates 0(1).
 
 ```
 b)  sum = 0 // 0(1)
@@ -19,24 +20,19 @@ b)  sum = 0 // 0(1)
           for l in range(k + 1, 10 + k): //0(n) * 0(n) = 0(^n)
             sum += 1 // 0(1)
 ```
-- 0(1) + 0(n^4) = 0(n^4) The nested for loops dominates
+- 0(1) + 0(n^4) = 0(n^4) The nested for loops dominates.
 
 ```
 c)  def bunnyEars(bunnies):
-      if bunnies == 0: //stops then counts back the total of bunney ears.
-        return 0
+      if bunnies == 0: // 0(n) stops then counts back the total of bunny ears. 
+        return 0 // 0(1)
 
-      return 2 + bunnyEars(bunnies-1) //At the reduction, the function calls itself with a smaller number each time
+      return 2 + bunnyEars(bunnies-1) // 0(n) At the reduction, the function calls itself with a smaller number each time
 ```
-- 0(2) + 0(n) = 0(2n) = 0(n)
-Recusive function 
-It loops through each bunny. 
+- 0(n) //This is recursive. It loops through each bunny and do not scale with the size of input
 
-Note: 
+Note to self: 
 ### Time Complexity = how the runtime of a function increases as the size of input increases
-- linear O(n)
-- constant O(1)
-- quadratic O(n^2)
 
 ## Exercise II
 
@@ -50,5 +46,6 @@ Write out your proposed algorithm in plain English or pseudocode and give the ru
 
 #determine the value of f that the number of dropped eggs minimized
 
-1. Identify the number of floor
-2. Divide the number of floor
+We identify the number of floor then divide the number of floor by two and move to that floor. Drop the egg from that floor, if it breaks then the floor you're looking for is below the current floor and if it doesn't break, then the floor you're looking for is above you. Continue this process until you find the floor you're looking for. 
+- This method can be done by quicksort or mergesort.
+- The time complexity will be o(log)n as we run a binary search. 
