@@ -47,5 +47,5 @@ Write out your proposed algorithm in plain English or pseudocode and give the ru
 #determine the value of f that the number of dropped eggs minimized
 
 We identify the number of floor then divide the number of floor by two and move to that floor. Drop the egg from that floor, if it breaks then the floor you're looking for is below the current floor and if it doesn't break, then the floor you're looking for is above you. Continue this process until you find the floor you're looking for. 
-- This method can be done by quicksort or mergesort.
+- This method can be done by quicksort or mergesort. ---------
 - The time complexity will be o(log)n as we run a binary search. 
